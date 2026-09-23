@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#F14635" />
+  <title>Kaspi.kz</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+
+  <!-- ЭКРАН ВХОДА -->
+  <div id="loginScreen" class="login-screen">
+    <div class="login-logo">kaspi</div>
+    <div class="login-title">Введите код доступа</div>
+    <div class="pin-dots" id="pinDots">
+      <span></span><span></span><span></span><span></span>
+    </div>
+    <div class="pin-error hidden" id="pinError">Неверный код</div>
+
+    <div class="numpad">
+      <button data-num="1"><span>1</span></button>
+      <button data-num="2"><span>2</span><small>ABC</small></button>
+      <button data-num="3"><span>3</span><small>DEF</small></button>
+      <button data-num="4"><span>4</span><small>GHI</small></button>
+      <button data-num="5"><span>5</span><small>JKL</small></button>
+      <button data-num="6"><span>6</span><small>MNO</small></button>
+      <button data-num="7"><span>7</span><small>PQRS</small></button>
+      <button data-num="8"><span>8</span><small>TUV</small></button>
+      <button data-num="9"><span>9</span><small>WXYZ</small></button>
+      <button data-num="face" class="numpad-secondary">😊</button>
+      <button data-num="0"><span>0</span></button>
+      <button data-num="del" class="numpad-secondary">⌫</button>
+    </div>
+
+    <div class="login-hint">Подсказка для демо: 8514</div>
+  </div>
+
+  <!-- ОСНОВНОЕ ПРИЛОЖЕНИЕ -->
+  <div id="app" class="app hidden">
+
+    <!-- ГЛАВНАЯ -->
+    <section id="view-home" class="view-home">
+      <div class="search-bar">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Поиск по Kaspi.kz" disabled />
+      </div>
+
+      <div class="banners">
+        <div class="banner banner-blue">
+          <div class="banner-tag">ВСЁ В РАССРОЧКУ</div>
+          <div class="banner-big">0-0-12</div>
+          <div class="banner-date">19 сентября - 2 октября</div>
+        </div>
+        <div class="banner banner-red">
+          <div class="banner-tag">Автотовары</div>
+          <div class="banner-big">0-0-12</div>
+          <div class="banner-date">19 сентября - 2 октября</div>
+        </div>
+      </div>
+
+      <div class="services">
+        <button class="service" data-nav="qr">
+          <div class="service-icon">📷</div>
+          <div class="service-text">Kaspi QR</div>
+        </button>
+        <button class="service" data-nav="mybank">
+          <div class="service-icon">🏦</div>
+          <div class="service-text">Мой банк</div>
+        </button>
+        <button class="service" data-nav="payments">
+          <div class="service-icon">💳</div>
+          <div class="service-text">Платежи</div>
+        </button>
+        <button class="service" data-nav="transfer">
+          <div class="service-icon">↗️</div>
+          <div class="service-text">Переводы</div>
+        </button>
+        <button class="service" data-nav="shop">
+          <div class="service-icon">🛒</div>
+          <div class="service-text">Магазин</div>
+        </button>
+        <button class="service" data-nav="promo">
+          <div class="service-icon">🎁</div>
+          <div class="service-text">Акции</div>
+        </button>
+        <button class="service" data-nav="travel">
+          <div class="service-icon">✈️</div>
+          <div class="service-text">Travel</div>
+        </button>
+        <button class="service" data-nav="gov">
+          <div class="service-icon">🏛️</div>
+          <div class="service-text">Госуслуги</div>
+        </button>
+      </div>
+
+      <div class="partners">
+        <div class="partner">
+          <div class="partner-logo market">M</div>
+          <div class="partner-info">
+            <div class="partner-name">Market.kz</div>
+            <div class="partner-sub">Объявления</div>
+          </div>
+        </div>
+        <div class="partner">
+          <div class="partner-logo magnum">🍎</div>
+          <div class="partner-info">
+            <div class="partner-name">Magnum</div>
+            <div class="partner-sub">Доставка</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tiles">
+        <div class="tile tile-red">
+          <div class="tile-tag">0-0-12</div>
+          <div class="tile-name">Рассрочка 0-0-12</div>
+        </div>
+        <div class="tile tile-yellow">
+          <div class="tile-icon">🟡</div>
+          <div class="tile-name">Kaspi Gold</div>
+          <div class="tile-sub">Эффективная</div>
+        </div>
+        <div class="tile tile-dark">
+          <div class="tile-icon">💼</div>
+          <div class="tile-name">Kaspi Pay</div>
+          <div class="tile-sub">Для бизнеса</div>
+        </div>
+        <div class="tile tile-green">
+          <div class="tile-icon">🟢</div>
+          <div class="tile-name">Кредиты</div>
+          <div class="tile-sub">До 2 млн ₸</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- МОЙ БАНК -->
+    <section id="view-mybank" class="view hidden">
+      <div class="view-header">
+        <button class="back-btn" data-nav="home">←</button>
+        <h2>Мой банк</h2>
+        <button class="logout-btn" id="logoutBtn">Выйти</button>
+      </div>
+
+      <div class="kaspi-gold-card">
+        <div class="kg-label">Kaspi Gold</div>
+        <div class="kg-available">Доступно</div>
+        <div class="kg-balance" id="balanceAmount">135 000,00 ₸</div>
+        <div class="kg-card-number" id="cardNumber">4400 4301 0000 0000</div>
+      </div>
+
+      <div class="bank-tabs">
+        <button class="bank-tab active" data-tab="actions">Действия</button>
+        <button class="bank-tab" data-tab="info">Инфо</button>
+        <button class="bank-tab" data-tab="history" data-nav="history">Выписка</button>
+      </div>
+
+      <div class="bank-content" id="bankContent">
+        <!-- Действия -->
+        <div class="bank-pane active" data-pane="actions">
+          <button class="action-row" data-action="topup">
+            <span class="action-icon">📥</span>
+            <span class="action-name">Пополнить</span>
+            <span class="action-arrow">›</span>
+          </button>
+          <button class="action-row" data-nav="transfer">
+            <span class="action-icon">↗️</span>
+            <span class="action-name">Перевести</span>
+            <span class="action-arrow">›</span>
+          </button>
+          <button class="action-row" data-nav="history">
+            <span class="action-icon">📜</span>
+            <span class="action-name">История операций</span>
+            <span class="action-arrow">›</span>
+          </button>
+        </div>
+
+        <!-- Инфо -->
+        <div class="bank-pane" data-pane="info">
+          <div class="info-row"><span>Владелец</span><b id="infoName">—</b></div>
+          <div class="info-row"><span>ИИН</span><b id="infoIIN">—</b></div>
+          <div class="info-row"><span>Телефон</span><b id="infoPhone">—</b></div>
+          <div class="info-row"><span>Тип карты</span><b>Kaspi Gold</b></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ПЕРЕВОДЫ -->
+    <section id="view-transfer" class="view hidden">
+      <div class="view-header">
+        <button class="back-btn" data-nav="home">←</button>
+        <h2>Переводы</h2>
+      </div>
+
+      <div class="transfer-tabs">
+        <button class="tt-tab active">Мои переводы</button>
+        <button class="tt-tab" data-nav="history">История</button>
+      </div>
+
+      <div class="contacts-list" id="contactsList"></div>
+
+      <div class="transfer-form">
+        <div class="field">
+          <label>Получатель</label>
+          <div class="field-value" id="selectedRecipient">Выберите получателя</div>
+        </div>
+        <div class="field">
+          <label>Сумма</label>
+          <input type="number" id="amountInput" placeholder="0 ₸" />
+        </div>
+        <div class="field">
+          <label>Комментарий</label>
+          <input type="text" id="commentInput" placeholder="Например: за обед" />
+        </div>
+        <button class="btn-primary" id="sendTransferBtn">Перевести</button>
+      </div>
+    </section>
+
+    <!-- ИСТОРИЯ -->
+    <section id="view-history" class="view hidden">
+      <div class="view-header">
+        <button class="back-btn" data-nav="mybank">←</button>
+        <h2>История операций</h2>
+      </div>
+      <div id="historyList" class="history-list"></div>
+    </section>
+
+    <!-- ЗАГЛУШКА -->
+    <section id="view-placeholder" class="view hidden">
+      <div class="view-header">
+        <button class="back-btn" data-nav="home">←</button>
+        <h2 id="placeholderTitle">Сервис</h2>
+      </div>
+      <div style="text-align:center;padding:60px 20px;opacity:0.5;">
+        <div style="font-size:48px;margin-bottom:16px;">🚧</div>
+        <div>В разработке</div>
+      </div>
+    </section>
+
+    <!-- МОДАЛКА ПОПОЛНЕНИЯ -->
+    <div id="topupModal" class="modal hidden">
+      <div class="modal-content">
+        <h3>Пополнение счёта</h3>
+        <p class="modal-sub">Введите сумму для зачисления</p>
+        <input type="number" id="topupAmount" placeholder="0 ₸" class="modal-input" />
+        <div class="modal-actions">
+          <button class="modal-btn cancel" id="cancelTopup">Отмена</button>
+          <button class="modal-btn confirm" id="confirmTopup">Пополнить</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ЧЕК ПОСЛЕ ПЕРЕВОДА -->
+    <div id="receiptModal" class="modal hidden">
+      <div class="modal-content receipt-content">
+        <button class="close-receipt" id="closeReceipt">✕</button>
+        <div class="receipt-check">✓</div>
+        <h3 class="receipt-title">Перевод выполнен</h3>
+        <div class="receipt-amount" id="receiptAmount">0 ₸</div>
+        <div class="receipt-row"><span>Отправитель</span><b id="receiptFrom">—</b></div>
+        <div class="receipt-row"><span>Карта</span><b id="receiptFromCard">—</b></div>
+        <div class="receipt-row"><span>Получатель</span><b id="receiptTo">—</b></div>
+        <div class="receipt-row"><span>Карта</span><b id="receiptToCard">—</b></div>
+        <div class="receipt-row"><span>Телефон</span><b id="receiptPhone">—</b></div>
+        <div class="receipt-row"><span>Комментарий</span><b id="receiptComment">—</b></div>
+        <div class="receipt-row"><span>Дата</span><b id="receiptDate">—</b></div>
+        <div class="receipt-row"><span>Статус</span><b class="receipt-status">Успешно</b></div>
+        <div class="receipt-id">ID: <span id="receiptId">—</span></div>
+      </div>
+    </div>
+
+    <!-- Нижняя навигация -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-nav="home">
+        <span>🏠</span><small>Главная</small>
+      </button>
+      <button class="nav-item" data-nav="qr">
+        <span>⊞</span><small>Kaspi QR</small>
+      </button>
+      <button class="nav-item" data-nav="messages">
+        <span>💬</span><small>Сообщения</small>
+      </button>
+      <button class="nav-item" data-nav="services">
+        <span>☰</span><small>Сервисы</small>
+      </button>
+    </nav>
+
+    <div id="toast" class="toast hidden"></div>
+  </div>
+
+  <script src="/app.js"></script>
+</body>
+</html>
